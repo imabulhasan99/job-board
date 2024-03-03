@@ -20,11 +20,20 @@ class JobController extends Controller
    
     public function show($uuid)
     {
-        $job = JobListing::where('uuid', $uuid)->first();
-        $relatedJobs = JobListing::where('job_category', 'LIKE', '%' . $job->job_category . '%')
-                        ->inRandomOrder()
-                        ->take(5)
-                        ->get();
+      
+        $cacheKey = 'job_' . $uuid;
+        $job = Cache::remember($cacheKey, 60 * 24, function () use ($uuid) {
+            return JobListing::where('uuid', $uuid)->first();
+        });
+        if (!$job) {
+            abort(404);
+        }
+        $relatedJobs = Cache::remember($cacheKey.'_related', 60 * 24, function () use ($job) {
+            return JobListing::where('job_category', 'LIKE', '%' . $job->job_category . '%')
+                            ->inRandomOrder()
+                            ->take(5)
+                            ->get();
+        });
     
         return view('frontend.job-single', ['job' => $job, 'relatedJobs' => $relatedJobs]);
     }
