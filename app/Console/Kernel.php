@@ -16,8 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        //$schedule->job(LaravelJob::class);
-        //$schedule->job(WordPressJob::class);
+        $schedule->job(LaravelJob::class);
+        $schedule->job(WordPressJob::class);
         $schedule->job(SymfonyJob::class);
 
     }

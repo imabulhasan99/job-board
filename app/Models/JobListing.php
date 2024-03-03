@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JobListing extends Model
 {
@@ -37,11 +38,15 @@ class JobListing extends Model
     ];
 
     
-    public function casts()
+    protected $casts = [
+        'posted_at' => 'datetime',
+        'expaire_at' => 'datetime',
+    ];
+
+    protected static function booted()
     {
-        return [
-            'posted_at'=> 'datetime',
-            'expaire_at'=> 'expaire_at',
-        ];
+        static::creating(function ($jobListing) {
+            $jobListing->uuid = Str::uuid();
+        });
     }
 }

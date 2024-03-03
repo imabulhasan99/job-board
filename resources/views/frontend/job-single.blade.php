@@ -16,8 +16,8 @@
                             <div class="czhnl c7z1d c2cn0 cwq9z cqwhl ck73f">
 
                                 <div class="czbam ccymi">
-                                    <img class="cy6kr cmi0k" src="images/company-icon-08.svg" width="72" height="72" alt="Company 08">
-                                    <h2 class="cznhr clt06 cqdqx">Medium Inc.</h2>
+                                    <img class="cy6kr cmi0k" src="{{$job->employer_logo}}" width="72" height="72" alt="{{$job->employer_name}}">
+                                    <h2 class="cznhr clt06 cqdqx">{{$job->employer_name}}</h2>
                                 </div>
 
                                 <div class="cua4c c3tj1 cip9s c8og8">
@@ -26,33 +26,66 @@
                                             <svg class="cjqf2 ctzpc c59y5" width="14" height="14" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M9.707 4.293a1 1 0 0 0-1.414 1.414L10.586 8H2V2h3a1 1 0 1 0 0-2H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h8.586l-2.293 2.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4Z"></path>
                                             </svg>
-                                            <span class="cm87k cf37z">24 August, 2024</span>
+                                            <span class="cm87k cf37z">
+                                                {{ $job->posted_at->isoFormat('Do MMMM, YYYY') }}
+                                            </span>
                                         </li>
                                         <li class="cduop c8og8">
                                             <svg class="cjqf2 ctzpc c59y5" width="14" height="16" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="7" cy="7" r="2"></circle>
                                                 <path d="M6.3 15.7c-.1-.1-4.2-3.7-4.2-3.8C.7 10.7 0 8.9 0 7c0-3.9 3.1-7 7-7s7 3.1 7 7c0 1.9-.7 3.7-2.1 5-.1.1-4.1 3.7-4.2 3.8-.4.3-1 .3-1.4-.1Zm-2.7-5 3.4 3 3.4-3c1-1 1.6-2.2 1.6-3.6 0-2.8-2.2-5-5-5S2 4.2 2 7c0 1.4.6 2.7 1.6 3.7 0-.1 0-.1 0 0Z"></path>
                                             </svg>
-                                            <span class="cm87k cf37z">London, UK / Remote friendly</span>
+                                            <span class="cm87k cf37z">
+                                                {{ $job->city }}, {{ $job->country }} / {{ $job->employment_type }}
+                                            </span>
                                         </li>
                                         <li class="cduop c8og8">
                                             <svg class="cjqf2 ctzpc c59y5" width="16" height="12" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15 0H1C.4 0 0 .4 0 1v10c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm-1 10H2V2h12v8Z"></path>
                                                 <circle cx="8" cy="6" r="2"></circle>
                                             </svg>
-                                            <span class="cm87k cf37z">$75K - $100K</span>
+                                            <span class="cm87k cf37z"> 
+                                                {{ $job->min_salary }} - {{ $job->max_salary }} {{ $job->salary_currency }}/{{ $job->salary_period }}
+                                            </span>
                                         </li>
+
+                                        <li class="cduop c8og8">
+                                            <svg class="cjqf2 ctzpc c59y5" width="16" height="12" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15 0H1C.4 0 0 .4 0 1v10c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm-1 10H2V2h12v8Z"></path>
+                                                <circle cx="8" cy="6" r="2"></circle>
+                                            </svg>
+                                            <span class="cm87k cf37z"> 
+                                                Application Start:  {{ $job->posted_at->isoFormat('Do MMMM, YYYY') }}
+                                            </span>
+                                
+                                        </li>
+                                    @if ($job->expaire_at)
+                                    <li class="cduop c8og8">
+                                        <svg class="cjqf2 ctzpc c59y5" width="16" height="12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15 0H1C.4 0 0 .4 0 1v10c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm-1 10H2V2h12v8Z"></path>
+                                            <circle cx="8" cy="6" r="2"></circle>
+                                        </svg>
+                                        <span class="cm87k cf37z"> 
+                                            Application Deadline:  {{ $job->expaire_at->isoFormat('Do MMMM, YYYY') }}
+                                        </span>
+                            
+                                    </li>
+                                    @endif  
                                     </ul>
                                 </div>
 
                                 <div class="c1vmp cfd1l cip9s">
-                                    <a class="czwz3 ce7qj cyky3 ctpla cn582 c6kou c0tyr" href="#0">
-                                        Apply Now <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
+                                    <a target="__blank" class="czwz3 ce7qj cyky3 ctpla cn582 c6kou c0tyr"
+                                     href="{{ $job->apply_link }}">
+                                        Apply Now 
+                                    <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
                                     </a>
                                 </div>
 
                                 <div class="czbam">
-                                    <a class="c4von cw2fq c4vrg cf37z" href="#0">Visit Website</a>
+                                    <a class="c4von cw2fq c4vrg cf37z" 
+                                    href="{{ $job->employer_website }}">
+                                        Visit Website</a>
                                 </div>
 
                             </div>
@@ -66,38 +99,36 @@
                         <!-- Job description -->
                         <div class="c8d05">
                             <div class="cvxp4">
-                                <a class="cw2fq c4vrg" href="index-2.html"><span class="ccolo">&lt;-</span> All Jobs</a>
+                                <a class="cw2fq c4vrg" href="{{route('job.index')}}"><span class="ccolo">&lt;-</span> All Jobs</a>
                             </div>
-                            <h1 class="cmz24 cuad0 cgmpd c6cl6">Engineering Manager Developer Experience</h1>
+                            <h1 class="cmz24 cuad0 cgmpd c6cl6">{{ $job->job_title }}</h1>
                             <!-- Job description -->
                             <div class="ctkqc cjx7n">
                                 <div>
-                                    <h3 class="cznhr clt06 cevzo cd67x">The Role</h3>
+                                    <h3 class="cznhr clt06 cevzo cd67x">Description:</h3>
                                     <div class="ca6yp cb7bz">
-                                        <p>In the world of AI, behavioural predictions are leading the charge to better machine learning.</p>
-                                        <p>There is so much happening in the AI space. Advances in the economic sectors have seen automated business practices rapidly increasing economic value. While the realm of the human sciences has used the power afforded by computational capabilities to solve many human based dilemmas. Even the art scene has adopted carefully selected ML applications to usher in the technological movement.</p>
-                                        <p>As a Senior Client Engineer, you'll work alongside other engineers, designers, and product managers to tackle everything from huge company initiatives to modest but important bug fixes, from start to finish. You'll also collaborate with your product team on discovery, helping to assess the direction and feasibility of product changes. And, perhaps most importantly, you'll actively contribute to the evolution of the culture and processes of a growing engineering team.</p>
+                                        {{ $job->description }}
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="cznhr clt06 cevzo cd67x">About You</h3>
+                                    @if($job->qualifications)
+                                    <h3 class="cznhr clt06 cevzo cd67x">Qualifications:</h3>
                                     <div class="ca6yp cb7bz">
-                                        <p>You love building great software. Your work could be supporting new feature development, migrating existing features, and creating other mobile and web solutions for customers. You'll have a primary focus on frontend development using Javascript. Our client's tech stack is JavaScript, primarily using React. A strong understanding of JS core (ES2019+) is required, with some exposure in Java as back-end technology. We use modern tools, which means you'll have the opportunity to work with Webpack, Redux, Apollo, Styled Components, and much more.</p>
-                                        <p>You love learning. Engineering is an ever-evolving world. You enjoy playing with new tech and exploring areas that you might not have experience with yet. You are self-driven, self-learner willing to share knowledge and participate actively in your community.</p>
-                                        <p>Having overlap with your team is critical when working in a global remote team. Modus requires all team members to overlap with EST morning hours daily. In addition, reliable high speed internet is a must.</p>
+                                       @foreach ( json_decode($job->qualifications) as $qualifications)
+                                           <li>{{$qualifications}}</li>
+                                       @endforeach
                                     </div>
+                                    @endif
                                 </div>
                                 <div>
-                                    <h3 class="cznhr clt06 cevzo cd67x">Things You Might Do</h3>
+                                    @if($job->responsibilities)
+                                    <h3 class="cznhr clt06 cevzo cd67x">Responsibilites:</h3>
                                     <div class="ca6yp cb7bz">
-                                        <p>We are a fast-growing, and remote-first company, so you'll likely get experience on many different projects across the organization. That said, here are some things you'll probably do:</p>
-                                        <ul class="cd40q cb1aa cb7bz">
-                                            <li>Give back to the community via open source and blog posts</li>
-                                            <li>Travel and meet great people- as part of our remote-first lifestyle, it's important that we come together as needed to work together, meet each other in person and have fun together. Please keep that in mind when you apply</li>
-                                            <li>Teach and be taught: Modus creates active teams that work in internal and external projects together, giving opportunities to stay relevant with the latest technologies and learning from experts worldwide</li>
-                                            <li>Interact directly with internal and external clients to represent Modus and its values</li>
-                                        </ul>
+                                        @foreach ( json_decode($job->responsibilities) as $responsibilities)
+                                            <li>{{$responsibilities}}</li>
+                                        @endforeach
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Social share -->
@@ -135,29 +166,45 @@
                             <!-- List container -->
                             <div class="czhnl ca7zr c9gvg c8og8">
                                 <!-- Item -->
+                                @foreach ($relatedJobs as $relatedJob)
                                 <div class="cmd8n czhnl cokkt c6kou">
                                     <div class="cwkz1 c0qn4">
                                         <div class="c6rln cclz8 cduop cb7bz cp1au">
                                             <div class="ctzpc">
-                                                <img src="images/company-icon-04.svg" width="56" height="56" alt="Company 04">
+                                                <img 
+                                                src="{{$relatedJob->employer_logo}}" width="56" height="56" alt="{{$relatedJob->employer_name}}">
                                             </div>
                                             <div class="chu3i c966h clhjg cduop cyhe5 cb04d cycys">
                                                 <div>
                                                     <div class="c5li5 ccgu6 c8og8">
-                                                        <div class="c3774 cznhr cf37z ck6q6">GitHub</div>
+                                                        <div class="c3774 cznhr cf37z ck6q6">{{$relatedJob->employer_name}}
+                                                        </div>
                                                     </div>
                                                     <div class="cmi0k">
-                                                        <a class="cznhr clt06 cqdqx" href="job-post.html">Remote Shopify Website Tester</a>
+                                                        <a target="__blank" class="cznhr clt06 cqdqx" 
+                                                        href="{{route('job.single',['uuid' => $relatedJob->uuid])}}">
+                                                            {{$relatedJob->job_title}}
+                                                        </a>
                                                     </div>
                                                     <div class="c0zhl">
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">$100K - $170K</a>
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">🇺🇸 NYC</a>
+                                                        @if($relatedJob->salary_currency)
+                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">
+                                                            {{$relatedJob->min_salary}} - {{$relatedJob->max_salary}}{{$relatedJob->salary_currency}}/{{$relatedJob->salary_period}} 
+                                                        </a>
+                                                        @endif
+                                                        @if($relatedJob->state)
+                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">
+                                                            {{$relatedJob->state}},{{$relatedJob->country}}
+                                                        </a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="co7yr c16gq c56h7 cduop c40vg c8og8">
                                                     <div class="cjjz8 ct4vx">
-                                                        <a class="czwz3 ce7qj cyky3 ctpla c2fn4 c40tu c6kou c50eh" href="job-post.html">
-                                                            Apply Now <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
+                                                        <a target="__blank"
+                                                        class="czwz3 ce7qj cyky3 ctpla c2fn4 c40tu c6kou c50eh" href="{{route('job.single',['uuid' => $relatedJob->uuid])}}">
+                                                            Apply Now 
+                                                            <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
                                                         </a>
                                                     </div>
                                                     <div class="c2vtk ca6yp cf37z c75bs">4h</div>
@@ -166,70 +213,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Item -->
-                                <div class="cmd8n czhnl cokkt c6kou">
-                                    <div class="cwkz1 c0qn4">
-                                        <div class="c6rln cclz8 cduop cb7bz cp1au">
-                                            <div class="ctzpc">
-                                                <img src="images/company-icon-04.svg" width="56" height="56" alt="Company 04">
-                                            </div>
-                                            <div class="chu3i c966h clhjg cduop cyhe5 cb04d cycys">
-                                                <div>
-                                                    <div class="c5li5 ccgu6 c8og8">
-                                                        <div class="c3774 cznhr cf37z ck6q6">GitHub</div>
-                                                    </div>
-                                                    <div class="cmi0k">
-                                                        <a class="cznhr clt06 cqdqx" href="job-post.html">Remote Senior Software Engineer</a>
-                                                    </div>
-                                                    <div class="c0zhl">
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">$100K - $170K</a>
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">🇺🇸 NYC</a>
-                                                    </div>
-                                                </div>
-                                                <div class="co7yr c16gq c56h7 cduop c40vg c8og8">
-                                                    <div class="cjjz8 ct4vx">
-                                                        <a class="czwz3 ce7qj cyky3 ctpla c2fn4 c40tu c6kou c50eh" href="job-post.html">
-                                                            Apply Now <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="c2vtk ca6yp cf37z c75bs">7h</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Item -->
-                                <div class="cmd8n czhnl cokkt c6kou">
-                                    <div class="cwkz1 c0qn4">
-                                        <div class="c6rln cclz8 cduop cb7bz cp1au">
-                                            <div class="ctzpc">
-                                                <img src="images/company-icon-11.svg" width="56" height="56" alt="Company 11">
-                                            </div>
-                                            <div class="chu3i c966h clhjg cduop cyhe5 cb04d cycys">
-                                                <div>
-                                                    <div class="c5li5 ccgu6 c8og8">
-                                                        <div class="c3774 cznhr cf37z ck6q6">Facebook</div>
-                                                    </div>
-                                                    <div class="cmi0k">
-                                                        <a class="cznhr clt06 cqdqx" href="job-post.html">Remote Cyber Security Analyst US</a>
-                                                    </div>
-                                                    <div class="c0zhl">
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">$55K - $100K</a>
-                                                        <a class="cv6oq ch6sm ca6yp comjk cy6kr cdxuw c4vrg cmwpt ceip1 cww2f c7d26 c9eyc ce33e cfhya" href="#0">🇺🇸 United States</a>
-                                                    </div>
-                                                </div>
-                                                <div class="co7yr c16gq c56h7 cduop c40vg c8og8">
-                                                    <div class="cjjz8 ct4vx">
-                                                        <a class="czwz3 ce7qj cyky3 ctpla c2fn4 c40tu c6kou c50eh" href="job-post.html">
-                                                            Apply Now <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="c2vtk ca6yp cf37z c75bs">2d</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

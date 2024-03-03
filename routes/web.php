@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [JobController::class,'index'])->name('index');
+Route::get('/', [JobController::class,'index'])->name('job.index');
+//Route::get('job/{uuid}', [JobController::class, 'show'])->name('job.show');
+Route::get('single/{uuid}', [JobController::class, 'show'])->name('job.single');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

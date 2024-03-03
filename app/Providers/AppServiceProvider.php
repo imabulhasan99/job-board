@@ -26,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
                 'X-RapidAPI-Key' => '62ed064f9fmsh3bd3f850278b097p133700jsnca750b9876a0',
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
+
+        Http::macro('mailerlite', function () {
+            return Http::withToken( config('mailerlite.api_key') )
+                    ->baseUrl('https://connect.mailerlite.com/');
+        });
     }
 }
