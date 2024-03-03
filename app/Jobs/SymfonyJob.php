@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Jobs\Store\StoreJobs;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,14 +30,19 @@ class SymfonyJob implements ShouldQueue
      */
     public function handle(): void
     {
-        for ($i = 0; $i <=2; $i++) {
-            $response = Http::job()->get('/search', [
-                'query' => config('job-fetch.symfony_search_query'),
-                'page' => 1,
-                'num_pages' => 20,
-                'date_posted' => 'week'
-            ]);
+        
+        $response = Http::job()->get('/search', [
+            'query' => config('job-fetch.symfony_search_query'),
+            'page' => 1,
+            'num_pages' => 20,
+            'date_posted' => 'week'
+        ]);
+        if($response->ok()){
             StoreJobs::dispatch($response->json(), 'Symfony');
-    }
+        } else {
+            Log::error($response['message']);
+        }
+        
+    
 }
 }

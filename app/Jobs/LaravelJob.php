@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class LaravelJob implements ShouldQueue
 {
@@ -31,14 +32,18 @@ class LaravelJob implements ShouldQueue
     public function handle(): void
     {
        
-        for ($i = 0; $i <=2; $i++) {
-            $response = Http::job()->get('/search', [
-                'query' => config('job-fetch.laravel_search_query'),
-                'page' => 1,
-                'num_pages' => 20,
-                'date_posted' => 'week'
-            ]);
+        $response = Http::job()->get('/search', [
+            'query' => config('job-fetch.laravel_search_query'),
+            'page' => 1,
+            'num_pages' => 20,
+            'date_posted' => 'week'
+        ]);
+        if($response->ok()){
             StoreJobs::dispatch($response->json(), 'Laravel');
-    }
+        } else {
+            Log::error($response['message']);
+        }
+        
+       
 }
 }
