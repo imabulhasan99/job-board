@@ -29,12 +29,14 @@ class SymfonyJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $response = Http::job()->get('/search', [
-            'query' => config('job-fetch.symfony_search_query'),
-            'page' => 1,
-            'num_pages' => 20,
-            'date_posted' => 'week'
-        ]);
-        StoreJobs::dispatch($response->json(), 'Symfony');
+        for ($i = 0; $i <=2; $i++) {
+            $response = Http::job()->get('/search', [
+                'query' => config('job-fetch.symfony_search_query'),
+                'page' => 1,
+                'num_pages' => 20,
+                'date_posted' => 'week'
+            ]);
+            StoreJobs::dispatch($response->json(), 'Symfony');
     }
+}
 }
