@@ -14,6 +14,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 class StoreJobs implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+   
     public $tries = 4; 
     public $backoff = [30,45,60];
     /**
