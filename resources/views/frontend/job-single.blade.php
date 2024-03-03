@@ -218,21 +218,7 @@
                         </div>
 
                         <!-- Newletter CTA -->
-                        <div>
-                            <div class="czbam cwq9z c6kou cwkz1 c0qn4">
-                                <div class="cjlhc czhnl comjk cmwpt c7z1d c2cn0 cww2f c3soh c6kdq cjxga cqwhl c8f1b" aria-hidden="true"></div>
-                                <div class="cw2fq c1laq cevzo ck6q6">Land your dream job</div>
-                                <div class="clt06 cu7if cip9s">Get a weekly email with the latest startup jobs.</div>
-                                <form class="cy6kr c0usk">
-                                    <div class="c3tj1 crk6p cti7q c1vmp ca7zr cfd1l c8og8">
-                                        <input type="email" class="cule2 ct5p9 c92ql c2fn4 cn582 cmi0k" placeholder="Your email" aria-label="Your email">
-                                        <button class="czwz3 ch6sm ce7qj cyky3 ctpla c40tu" type="submit">Join Newsletter</button>
-                                    </div>
-                                    <!-- Success message -->
-                                    <!-- <p class="font-medium text-emerald-600 text-center sm:text-left sm:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
-                                </form>
-                            </div>
-                        </div>
+                        <livewire:email-subscription />
 
                     </div>
 

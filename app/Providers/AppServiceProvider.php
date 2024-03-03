@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Http::macro('job', function () {
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'jsearch.p.rapidapi.com',
-                'X-RapidAPI-Key' => '62ed064f9fmsh3bd3f850278b097p133700jsnca750b9876a0',
+                'X-RapidAPI-Key' => config('job-fetch.apiKey'),
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
 

@@ -17,9 +17,16 @@ class EmailSubscription extends Component
     public function save()
     {
         $this->validate();
-        $emailID = DB::table('subscribers')->insertGetId(['email' => $this->email]);
+        $emailID = DB::table('subscribers')->insertGetId(
+            [
+                'email' => $this->email,
+                'created_at' => now(),
+                'updated_at' => now(),
+                ]
+        );
         $email = DB::table('subscribers')->where('id', $emailID)->value('email');
         AddSubscriberToMailerLite::dispatch($email);
+        $this->reset();
        
     }
     public function render()
