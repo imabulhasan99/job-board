@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Frontned;
 use App\Models\JobListing;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class JobController extends Controller
 {
     public function index()
     {
-        $jobs = JobListing::orderBy("posted_at","desc")->paginate(100);
+        $jobs = Cache::remember('jobs', 60 * 24, function () {
+            return JobListing::orderBy("posted_at", "desc")->paginate(100);
+        });
         return view('frontend.index', ['jobs' => $jobs]);
     }
 
