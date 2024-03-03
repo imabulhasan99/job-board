@@ -197,7 +197,10 @@
 
                         <!-- Job list -->
                         <div class="c8d05 c0ahj">
-                            <h2 class="c6cl6 cuad0 cfibj clt06">Latest jobs</h2>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h2 class="c6cl6 cuad0 cfibj clt06">Latest jobs</h2>
+                                <p>Today Total Jobs: {{$totalJobs}}</p>
+                            </div>
                             <!-- List container -->
                             @foreach ($jobs as $index => $job)
                             <div class="c8og8 ca7zr">
@@ -216,7 +219,7 @@
                                                                {{$job->employer_name}}</a></div>
                                                     </div>
                                                 <div class="cmi0k">
-                                                    <a class="cqdqx clt06 cznhr" href="job-post.html"> {{$job->job_title}}</a>
+                                                    <a target="__blank" class="cqdqx clt06 cznhr" href="{{route('job.single',['uuid'=>$job->uuid])}}"> {{$job->job_title}}</a>
                                                 </div>
                                                 <div class="c0zhl">
                                                     <a class="cfhya cy6kr ch6sm ceip1 cdxuw ce33e c7d26 c9eyc c4vrg ca6yp cww2f comjk cmwpt cv6oq" href="#0">
@@ -225,7 +228,9 @@
                                             </div>
                                             <div class="c8og8 co7yr cduop c40vg c16gq c56h7">
                                                 <div class="ct4vx cjjz8">
-                                                    <a class="c40tu ce7qj c50eh c2fn4 cyky3 ctpla czwz3 c6kou" href="{{route('job.single', ['uuid' => $job->uuid])}}">
+                                                    <a target="__blank" 
+                                                    class="c40tu ce7qj c50eh c2fn4 cyky3 ctpla czwz3 c6kou" 
+                                                    href="{{route('job.single', ['uuid' => $job->uuid])}}">
                                                          Apply Now <span class="ce3ah ccolo cndda clfy9 comjk cmwpt c8bku">-&gt;</span>
                                                                     </a>
                                                 </div>

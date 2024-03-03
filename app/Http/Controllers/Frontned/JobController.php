@@ -11,10 +11,11 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Cache::remember('jobs', 60 * 24, function () {
+        $totalJobs = JobListing::count();
+        $jobs = Cache::remember('jobs', 60 * 1, function () {
             return JobListing::orderBy("posted_at", "desc")->paginate(100);
         });
-        return view('frontend.index', ['jobs' => $jobs]);
+        return view('frontend.index', ['jobs' => $jobs, 'totalJobs' => $totalJobs]);
     }
 
    
@@ -22,13 +23,13 @@ class JobController extends Controller
     {
       
         $cacheKey = 'job_' . $uuid;
-        $job = Cache::remember($cacheKey, 60 * 24, function () use ($uuid) {
+        $job = Cache::remember($cacheKey, 60 * 2, function () use ($uuid) {
             return JobListing::where('uuid', $uuid)->first();
         });
         if (!$job) {
             abort(404);
         }
-        $relatedJobs = Cache::remember($cacheKey.'_related', 60 * 24, function () use ($job) {
+        $relatedJobs = Cache::remember($cacheKey.'_related', 60 * 1, function () use ($job) {
             return JobListing::where('job_category', 'LIKE', '%' . $job->job_category . '%')
                             ->inRandomOrder()
                             ->take(5)
