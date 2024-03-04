@@ -154,7 +154,6 @@
 
                     <!-- Main content -->
                     <div class="cd11c">
-
                         <!-- Job list -->
                         <div class="c8d05 c0ahj">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -188,11 +187,14 @@
                                             </div>
                                             <div class="c8og8 co7yr cduop c40vg c16gq c56h7">
                                                 <div class="ct4vx cjjz8">
-                                                    <a target="__blank" 
+                                                    <a wire:navigate
                                                     class="c40tu ce7qj c50eh c2fn4 cyky3 ctpla czwz3 c6kou" 
                                                     href="{{route('job.single', ['uuid' => $job->uuid])}}">
-                                                         Apply Now <span class="ce3ah ccolo cndda clfy9 comjk cmwpt c8bku">-&gt;</span>
-                                                                    </a>
+                                                         Apply Now 
+                                                         <span 
+                                                         class="ce3ah ccolo cndda clfy9 comjk cmwpt c8bku">-&gt;
+                                                         </span>
+                                                    </a>
                                                 </div>
                                                 <div class="cf37z c75bs ca6yp c2vtk">
                                                     {{$job->posted_at->diffForHumans()}}
@@ -208,15 +210,12 @@
                             </div>
                             @endforeach
                         </div>
-                        
-                       
-
                     </div>
 
                 </div>
                 <div class="pagination">
                     @foreach ($jobs->getUrlRange(1, $jobs->lastPage()) as $page => $url)
-                        <a href="{{ $url }}" class="page @if ($page === $jobs->currentPage()) active @endif">{{ $page }}</a>
+                        <a wire:navigate href="{{ $url }}" class="page @if ($page === $jobs->currentPage()) active @endif">{{ $page }}</a>
                     @endforeach    
                 </div>
                 

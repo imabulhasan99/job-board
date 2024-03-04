@@ -99,7 +99,7 @@
                         <!-- Job description -->
                         <div class="c8d05">
                             <div class="cvxp4">
-                                <a class="cw2fq c4vrg" href="{{route('job.index')}}"><span class="ccolo">&lt;-</span> All Jobs</a>
+                                <a wire:navigate class="cw2fq c4vrg" href="{{route('job.index')}}"><span class="ccolo">&lt;-</span> All Jobs</a>
                             </div>
                             <h1 class="cmz24 cuad0 cgmpd c6cl6">{{ $job->job_title }}</h1>
                             <!-- Job description -->
@@ -201,13 +201,15 @@
                                                 </div>
                                                 <div class="co7yr c16gq c56h7 cduop c40vg c8og8">
                                                     <div class="cjjz8 ct4vx">
-                                                        <a target="__blank"
+                                                        <a wire:navigate target="__blank"
                                                         class="czwz3 ce7qj cyky3 ctpla c2fn4 c40tu c6kou c50eh" href="{{route('job.single',['uuid' => $relatedJob->uuid])}}">
                                                             Apply Now 
                                                             <span class="c8bku clfy9 ccolo cndda comjk cmwpt ce3ah">-&gt;</span>
                                                         </a>
                                                     </div>
-                                                    <div class="c2vtk ca6yp cf37z c75bs">4h</div>
+                                                    <div class="c2vtk ca6yp cf37z c75bs">
+                                                        {{$relatedJob->posted_at->diffForHumans()}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

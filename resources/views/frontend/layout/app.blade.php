@@ -39,7 +39,7 @@
         
                 <!-- Illustration -->
                 <div class="cetod c6kdq c8zq8 c8f1b cndjv codga c9rix" aria-hidden="true">
-                    <img src="images/hero-illustration.svg" class="co24w" width="1440" height="749" alt="Hero Illustration">
+                    <img src="{{asset('images/hero-illustration.svg')}}" class="co24w" width="1440" height="749" alt="Hero Illustration">
                 </div>
         
                 <div class="cfd1l cnsl7 cwkz1 cwkio">
@@ -55,10 +55,10 @@
                             <div class="cswe3 cp1au c8p1b crj19 c6rln cclz8 cua4c">
                                 <div class="czodn cp1au c8p1b crj19 cypyb cclz8">
                                     <div class="cs3h1 cy6kr csd9h">
-                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-01.jpg" width="32" height="32" alt="Avatar 01">
-                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-02.jpg" width="32" height="32" alt="Avatar 02">
-                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-03.jpg" width="32" height="32" alt="Avatar 03">
-                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-04.jpg" width="32" height="32" alt="Avatar 04">
+                                        <img class="c52nt c1g5q caz15 c4146" src="{{asset('images/avatar-01.jpg')}}" width="32" height="32" alt="Avatar 01">
+                                        <img class="c52nt c1g5q caz15 c4146" src="{{asset('images/avatar-02.jpg')}}" width="32" height="32" alt="Avatar 02">
+                                        <img class="c52nt c1g5q caz15 c4146" src="{{asset('images/avatar-03.jpg')}}" width="32" height="32" alt="Avatar 03">
+                                        <img class="c52nt c1g5q caz15 c4146" src="{{asset('images/avatar-04.jpg')}}" width="32" height="32" alt="Avatar 04">
                                     </div>
                                     <div class="cf37z c4vrg ca6yp">Reach <span class="cw2fq">100K+</span> Prefessionals</div>
                                 </div>
