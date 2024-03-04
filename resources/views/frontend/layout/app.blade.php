@@ -29,9 +29,99 @@
                 </div>
             </div>
         </header>
+        <main class="cycys">
 
+            <!-- Hero -->
+            <section class="cwq9z cj019">
+        
+                <!-- Bg -->
+                <div class="cetod c6kdq cjxga c8f1b cfcbm ctjxe cjcd5" aria-hidden="true"></div>
+        
+                <!-- Illustration -->
+                <div class="cetod c6kdq c8zq8 c8f1b cndjv codga c9rix" aria-hidden="true">
+                    <img src="images/hero-illustration.svg" class="co24w" width="1440" height="749" alt="Hero Illustration">
+                </div>
+        
+                <div class="cfd1l cnsl7 cwkz1 cwkio">
+                    <div class="c8d05 cef3h c0ahj cm48u">
+        
+                        <!-- Hero content -->
+                        <div class="clxkp czbam chjqk">
+        
+                            <!-- Copy -->
+                            <h1 class="ckqm5 ccymi cuad0">Join your desgire job in the <span class="c1laq chgw8 cw2fq">industry</span></h1>
+                            <p class="cjx7n cqdqx ca6yp">This is the place where you can find your desgire job.</p>
+                            <!-- Button + Avatars -->
+                            <div class="cswe3 cp1au c8p1b crj19 c6rln cclz8 cua4c">
+                                <div class="czodn cp1au c8p1b crj19 cypyb cclz8">
+                                    <div class="cs3h1 cy6kr csd9h">
+                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-01.jpg" width="32" height="32" alt="Avatar 01">
+                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-02.jpg" width="32" height="32" alt="Avatar 02">
+                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-03.jpg" width="32" height="32" alt="Avatar 03">
+                                        <img class="c52nt c1g5q caz15 c4146" src="images/avatar-04.jpg" width="32" height="32" alt="Avatar 04">
+                                    </div>
+                                    <div class="cf37z c4vrg ca6yp">Reach <span class="cw2fq">100K+</span> Prefessionals</div>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+                </div>
+            </section>
+             <!-- Press logos -->
+             <section>
+                <div class="cfd1l cnsl7 cwkz1 cwkio">
+                    <div class="cokkt czhnl c0qn4 c4tzn">
+            
+                        <!-- Items -->
+                        <div class="c8og8 cvkqj cduop ckxup czbam">
+        
+                            <!-- Trusted by -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Laravel</a></div>
+                            </div>
+            
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">WordPress</a></div>
+                            </div>
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Symfony</a></div>
+                            </div>
+            
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Vue JS</a></div>
+                            </div>
+            
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">React JS</a></div>
+                            </div>
+            
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Node JS</a></div>
+                            </div>
+        
+                            <!-- Item -->
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Paython</a></div>
+                            </div>
+        
+                            <div class="cn582 ce33e cp9oo cujho cpiyw">
+                                <div class="ch6sm c1laq cu7if cw2fq"><a href="">Asp.Net</a></div>
+                            </div>
+            
+                        </div>
+            
+                    </div>
+                </div>
+            </section>
         @yield('main-content')
-
+    </main>
         <!-- Site footer -->
         <footer>
             <div class="cfd1l cnsl7 cwkz1 cwkio">

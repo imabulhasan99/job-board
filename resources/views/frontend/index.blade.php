@@ -1,45 +1,5 @@
 @extends('frontend.layout.app')
 @section('main-content')
-<main class="cycys">
-
-    <!-- Hero -->
-    <section class="cwq9z cj019">
-
-        <!-- Bg -->
-        <div class="cetod c6kdq cjxga c8f1b cfcbm ctjxe cjcd5" aria-hidden="true"></div>
-
-        <!-- Illustration -->
-        <div class="cetod c6kdq c8zq8 c8f1b cndjv codga c9rix" aria-hidden="true">
-            <img src="images/hero-illustration.svg" class="co24w" width="1440" height="749" alt="Hero Illustration">
-        </div>
-
-        <div class="cfd1l cnsl7 cwkz1 cwkio">
-            <div class="c8d05 cef3h c0ahj cm48u">
-
-                <!-- Hero content -->
-                <div class="clxkp czbam chjqk">
-
-                    <!-- Copy -->
-                    <h1 class="ckqm5 ccymi cuad0">Join your desgire job in the <span class="c1laq chgw8 cw2fq">industry</span></h1>
-                    <p class="cjx7n cqdqx ca6yp">This is the place where you can find your desgire job.</p>
-                    <!-- Button + Avatars -->
-                    <div class="cswe3 cp1au c8p1b crj19 c6rln cclz8 cua4c">
-                        <div class="czodn cp1au c8p1b crj19 cypyb cclz8">
-                            <div class="cs3h1 cy6kr csd9h">
-                                <img class="c52nt c1g5q caz15 c4146" src="images/avatar-01.jpg" width="32" height="32" alt="Avatar 01">
-                                <img class="c52nt c1g5q caz15 c4146" src="images/avatar-02.jpg" width="32" height="32" alt="Avatar 02">
-                                <img class="c52nt c1g5q caz15 c4146" src="images/avatar-03.jpg" width="32" height="32" alt="Avatar 03">
-                                <img class="c52nt c1g5q caz15 c4146" src="images/avatar-04.jpg" width="32" height="32" alt="Avatar 04">
-                            </div>
-                            <div class="cf37z c4vrg ca6yp">Reach <span class="cw2fq">100K+</span> Prefessionals</div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
     <!-- Page content -->
     <section>
         <div class="cfd1l cnsl7 cwkz1 cwkio">
@@ -248,55 +208,22 @@
                             </div>
                             @endforeach
                         </div>
+                        
                        
-                        <div>
-                            <h2 class="c6cl6 cuad0 cfibj clt06">Our customers love us</h2>
-                            <!-- Testimonials container -->
-                            <div class="c2i7x">
-                                <!-- Item -->
-                                <div class="c7z1d cqwhl ch4ps ch7jl ck73f cww2f comjk cmwpt casko csmwo cao76">
-                                    <div class="c8og8 cduop cv4ej">
-                                        <div class="cwq9z ctzpc">
-                                            <img class="c1g5q" src="images/testimonial-01.jpg" width="102" height="102" alt="Testimonial 01">
-                                            <svg class="c6kdq cyzod c753i cflao" width="26" height="17" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 16.026h8.092l6.888-16h-4.592L0 16.026Zm11.02 0h8.092L26 .026h-4.65l-10.33 16Z"></path>
-                                            </svg>
-                                        </div>
-                                        <figure>
-                                            <blockquote class="cg9ly cmn18 cqdqx clt06">
-                                                <p>Hiring a Senior Laravel engineer through JobBoard has been incredible. The best job board experience we've ever had.</p>
-                                            </blockquote>
-                                            <figcaption class="cf37z c4vrg">Patrick Metzger, CEO <a class="c0bjb c4von" href="#0">App.com</a></figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                                <!-- Item -->
-                                <div class="c7z1d cqwhl crhpi c0s3t ck73f cww2f comjk cmwpt casko csmwo cao76">
-                                    <div class="c8og8 cduop cv4ej">
-                                        <div class="cwq9z ctzpc">
-                                            <img class="c1g5q" src="images/testimonial-02.jpg" width="102" height="102" alt="Testimonial 02">
-                                            <svg class="c6kdq cyzod c753i cflao" width="26" height="17" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 16.026h8.092l6.888-16h-4.592L0 16.026Zm11.02 0h8.092L26 .026h-4.65l-10.33 16Z"></path>
-                                            </svg>
-                                        </div>
-                                        <figure>
-                                            <blockquote class="cg9ly cmn18 cqdqx clt06">
-                                                <p>Hiring a Senior Laravel engineer through JobBoard has been incredible. The best job board experience we've ever had.</p>
-                                            </blockquote>
-                                            <figcaption class="cf37z c4vrg">Annie Patrick, CEO <a class="cpjz5 c4von" href="#0">TrueThing</a></figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
                 </div>
+                <div class="pagination">
+                    @foreach ($jobs->getUrlRange(1, $jobs->lastPage()) as $page => $url)
+                        <a href="{{ $url }}" class="page @if ($page === $jobs->currentPage()) active @endif">{{ $page }}</a>
+                    @endforeach    
+                </div>
+                
+                
+                  
 
-            </div>
+                </div>
         </div>
     </section>
-
-</main>
 @endsection
