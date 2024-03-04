@@ -31,18 +31,20 @@ class LaravelJob implements ShouldQueue
      */
     public function handle(): void
     {
+        for ($page = 1; $page <= 10; $page++) {
+            $response = Http::job()->get('/search', [
+                'query' => config('job-fetch.laravel_search_query'),
+                'page' => $page,
+                'num_pages' => 20,
+                'date_posted' => 'week'
+            ]);
+            if($response->ok()){
+                StoreJobs::dispatch($response->json(), 'Laravel');
+            } else {
+                Log::error($response['message']);
+            }
+    }
        
-        $response = Http::job()->get('/search', [
-            'query' => config('job-fetch.laravel_search_query'),
-            'page' => 1,
-            'num_pages' => 20,
-            'date_posted' => 'week'
-        ]);
-        if($response->ok()){
-            StoreJobs::dispatch($response->json(), 'Laravel');
-        } else {
-            Log::error($response['message']);
-        }
         
        
 }

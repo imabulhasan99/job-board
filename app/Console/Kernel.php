@@ -20,8 +20,8 @@ class Kernel extends ConsoleKernel
         $schedule->job(WordPressJob::class)->daily();
         $schedule->job(SymfonyJob::class)->daily(); */
         $schedule->job(LaravelJob::class);
-        //$schedule->job(WordPressJob::class);
-        //$schedule->job(SymfonyJob::class);
+        $schedule->job(WordPressJob::class);
+        $schedule->job(SymfonyJob::class);
 
     }
 

@@ -181,7 +181,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="cmi0k">
-                                                        <a target="__blank" class="cznhr clt06 cqdqx" 
+                                                        <a wire:navigate class="cznhr clt06 cqdqx" 
                                                         href="{{route('job.single',['uuid' => $relatedJob->uuid])}}">
                                                             {{$relatedJob->job_title}}
                                                         </a>

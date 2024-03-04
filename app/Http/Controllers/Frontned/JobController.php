@@ -12,9 +12,10 @@ class JobController extends Controller
     public function index()
     {
         $totalJobs = JobListing::count();
-        $jobs = Cache::remember('jobs', 60 * 1, function () {
-            return JobListing::orderBy("posted_at", "desc")->paginate(100);
-        });
+        /* $jobs = Cache::remember('jobs', 60 * 1, function () {
+            return JobListing::orderBy("posted_at", "desc")->paginate(50);
+        }); */
+        $jobs = JobListing::orderBy("posted_at", "desc")->paginate(30);
         return view('frontend.index', ['jobs' => $jobs, 'totalJobs' => $totalJobs]);
     }
 

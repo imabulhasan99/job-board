@@ -6,13 +6,9 @@
                     <div class="cip9s cu7if clt06">Get a weekly email with the latest startup jobs.</div>
                 <form wire:submit.prevent='save' class="cy6kr c0usk">
                     <div class="cfd1l c8og8 c1vmp ca7zr c3tj1 crk6p cti7q">
-                        <input wire:model.live='email' type="email" name="email" class="cule2 cmi0k cn582 c2fn4 ct5p9 c92ql" placeholder="Your email" aria-label="Your email">
+                        <input wire:model.blur='email' type="email" name="email" class="cule2 cmi0k cn582 c2fn4 ct5p9 c92ql" placeholder="Your email" aria-label="Your email">
                         <button class="c40tu ch6sm ce7qj cyky3 ctpla czwz3" type="submit">Join Newsletter</button>
-                        @error('email')
-                        <p class="font-medium text-red-900 text-center sm:text-left sm:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p>
-                        @enderror
                     </div>
-                  
                             <!-- Success message -->
                             <!-- <p class="font-medium text-emerald-600 text-center sm:text-left sm:absolute mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
                 </form>

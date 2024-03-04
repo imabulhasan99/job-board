@@ -17,6 +17,7 @@ class EmailSubscription extends Component
     public function save()
     {
         $this->validate();
+        dd($this->email);
         $emailID = DB::table('subscribers')->insertGetId(
             [
                 'email' => $this->email,
@@ -25,7 +26,7 @@ class EmailSubscription extends Component
                 ]
         );
         $email = DB::table('subscribers')->where('id', $emailID)->value('email');
-        AddSubscriberToMailerLite::dispatch($email);
+        //AddSubscriberToMailerLite::dispatch($email);
         $this->reset();
        
     }
