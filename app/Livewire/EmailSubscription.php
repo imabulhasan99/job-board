@@ -3,12 +3,12 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\Verify\EmailVerifyJob;
 use Illuminate\Support\Facades\Session;
 use App\Jobs\Store\AddSubscriberToMailerLite;
+use Illuminate\Validation\Rule;
 
 class EmailSubscription extends Component
 {
