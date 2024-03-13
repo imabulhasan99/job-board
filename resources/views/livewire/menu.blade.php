@@ -7,6 +7,12 @@
                 <div class="c8og8 cvkqj cduop ckxup czbam">
 
                     <!-- Trusted by -->
+                    @if (!request()->is('/'))
+                    <div class="cn582 ce33e cp9oo cujho cpiyw">
+                        <div class="ch6sm c1laq cu7if cw2fq">
+                            <a wire:navigate href="{{route('job.index')}}">Home</a></div>
+                    </div>
+                    @endif
                     <div class="cn582 ce33e cp9oo cujho cpiyw">
                         <div class="ch6sm c1laq cu7if cw2fq">
                             <a wire:navigate href="{{route('job.laravel')}}">Laravel</a></div>

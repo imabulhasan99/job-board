@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class JobListing extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'employer_name',
         'employer_logo',
@@ -37,7 +38,6 @@ class JobListing extends Model
         'required_experience',
     ];
 
-    
     protected $casts = [
         'posted_at' => 'datetime',
         'expaire_at' => 'datetime',

@@ -31,8 +31,8 @@ return new class extends Migration
             $table->string('google_link')->nullable();
             $table->string('posted_at');
             $table->string('expaire_at')->nullable();
-            $table->decimal('min_salary',10,2)->nullable();
-            $table->decimal('max_salary',10,2)->nullable();
+            $table->decimal('min_salary', 10, 2)->nullable();
+            $table->decimal('max_salary', 10, 2)->nullable();
             $table->string('salary_currency')->nullable();
             $table->string('salary_period')->nullable();
             $table->json('benefits')->nullable();

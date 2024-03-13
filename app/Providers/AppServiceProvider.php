@@ -20,20 +20,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $apiKeys = config('job-fetch.apiKeys');
-        $keyIndex = 0;
-        Http::macro('job', function () use ($apiKeys, $keyIndex){
-            $apiKey = $apiKeys[$keyIndex];
-            $keyIndex = ($keyIndex + 1) % count( $apiKeys);
+        Http::macro('job', function () {
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'jsearch.p.rapidapi.com',
-                'X-RapidAPI-Key' => $apiKey,
+                'X-RapidAPI-Key' => config('job-fetch.apiKey'),
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
 
         Http::macro('mailerlite', function () {
-            return Http::withToken( config('mailerlite.api_key') )
-                    ->baseUrl('https://connect.mailerlite.com/');
+            return Http::withToken(config('mailerlite.api_key'))
+                ->baseUrl('https://connect.mailerlite.com/');
         });
     }
 }
