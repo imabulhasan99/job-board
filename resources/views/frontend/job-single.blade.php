@@ -16,7 +16,14 @@
                             <div class="czhnl c7z1d c2cn0 cwq9z cqwhl ck73f">
 
                                 <div class="czbam ccymi">
-                                    <img class="cy6kr cmi0k" src="{{$job->employer_logo}}" width="72" height="72" alt="{{$job->employer_name}}">
+                                    <img class="cy6kr cmi0k" 
+                                    src="
+                                    @if($job->employer_logo)
+                                    {{$job->employer_logo}}
+                                    @else
+                                    {{asset('images/default.jpg')}}
+                                    @endif" 
+                                    width="72" height="72" alt="{{$job->employer_name}}">
                                     <h2 class="cznhr clt06 cqdqx">{{$job->employer_name}}</h2>
                                 </div>
 
@@ -172,7 +179,14 @@
                                         <div class="c6rln cclz8 cduop cb7bz cp1au">
                                             <div class="ctzpc">
                                                 <img 
-                                                src="{{$relatedJob->employer_logo}}" width="56" height="56" alt="{{$relatedJob->employer_name}}">
+                                                src="
+                                                @if($relatedJob->employer_logo)
+                                                {{$relatedJob->employer_logo}}
+                                                @else
+                                                {{asset('images/default.jpg')}}
+                                                @endif
+                                                " 
+                                                width="56" height="56" alt="{{$relatedJob->employer_name}}">
                                             </div>
                                             <div class="chu3i c966h clhjg cduop cyhe5 cb04d cycys">
                                                 <div>

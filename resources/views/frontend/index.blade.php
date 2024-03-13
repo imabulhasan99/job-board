@@ -168,7 +168,13 @@
                                     <div class="cwkz1 c0qn4">
                                         <div class="cduop cb7bz cp1au c6rln cclz8">
                                             <div class="ctzpc">
-                                                <img src="{{$job->employer_logo}}" width="56" height="56" alt="Company 05">
+                                                <img src="
+                                                @if($job->employer_logo)
+                                                {{$job->employer_logo}}
+                                                @else
+                                                {{asset('images/default.jpg')}}
+                                                @endif
+                                                " width="56" height="56" alt="Company 05">
                                             </div>
                                             <div class="cycys cduop chu3i cyhe5 cb04d c966h clhjg">
                                                 <div>
