@@ -31,7 +31,7 @@ class LaravelJob implements ShouldQueue
      */
     public function handle(): void
     {
-        for ($page = 1; $page <= 10; $page++) {
+        for ($page = 1; $page <= 2; $page++) {
             $response = Http::job()->get('/search', [
                 'query' => config('job-fetch.laravel_search_query'),
                 'page' => $page,
