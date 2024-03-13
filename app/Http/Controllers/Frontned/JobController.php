@@ -22,7 +22,6 @@ class JobController extends Controller
    
     public function show($uuid)
     {
-      
         $cacheKey = 'job_' . $uuid;
         $job = Cache::remember($cacheKey, 60 * 2, function () use ($uuid) {
             return JobListing::where('uuid', $uuid)->first();
