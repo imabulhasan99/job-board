@@ -4,7 +4,7 @@
     <title>@yield('page-title', 'Job Listing - Home')</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script 
+    <script
     defer data-domain='preview.cruip.com,rollup.cruip.com' src='../../plausible.cruip.com/js/script.js'></script>
 </head>
 <body class="cz0l8 cuad0 c1222 cznhr cztc9">
@@ -33,21 +33,21 @@
 
             <!-- Hero -->
             <section class="cwq9z cj019">
-        
+
                 <!-- Bg -->
                 <div class="cetod c6kdq cjxga c8f1b cfcbm ctjxe cjcd5" aria-hidden="true"></div>
-        
+
                 <!-- Illustration -->
                 <div class="cetod c6kdq c8zq8 c8f1b cndjv codga c9rix" aria-hidden="true">
                     <img src="{{asset('images/hero-illustration.svg')}}" class="co24w" width="1440" height="749" alt="Hero Illustration">
                 </div>
-        
+
                 <div class="cfd1l cnsl7 cwkz1 cwkio">
                     <div class="c8d05 cef3h c0ahj cm48u">
-        
+
                         <!-- Hero content -->
                         <div class="clxkp czbam chjqk">
-        
+
                             <!-- Copy -->
                             <h1 class="ckqm5 ccymi cuad0">Join your desgire job in the <span class="c1laq chgw8 cw2fq">industry</span></h1>
                             <p class="cjx7n cqdqx ca6yp">This is the place where you can find your desgire job.</p>
@@ -63,9 +63,9 @@
                                     <div class="cf37z c4vrg ca6yp">Reach <span class="cw2fq">100K+</span> Prefessionals</div>
                                 </div>
                             </div>
-        
+
                         </div>
-        
+
                     </div>
                 </div>
             </section>
@@ -120,7 +120,7 @@
 
                     <!-- Bottom area -->
                     <div class="czbam cwa15 czgjk ceiqu">
-                    
+
                         <!-- Left links -->
                         <div class="cmi0k cf37z c4vrg crf2m cc7q4">
                             <ul class="cy6kr cvkqj cf37z c4vrg">
@@ -138,7 +138,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                         <!-- Copyright -->
                         <div class="cf37z ca6yp">@Job Board | All rights reserved</div>
 
@@ -150,7 +150,5 @@
         </footer>
 
     </div>
-
-    <script src="{{asset('js/vendors/alpinejs.min.js')}}" defer=""></script>
     <script src="{{asset('js/main.js')}}"></script>
 </html>
