@@ -15,11 +15,20 @@
                 <p style="color:rgb(188, 16, 16)">{{ $message }}</p>
             @enderror
             @session('email-success')
-            <p class="mt-2 
-            text-center 
-            text-sm text-green-700 font-medium text-emerald-600 opacity-75 sm:absolute sm:text-left">
-            {{$value}}
-            </p> 
+                <p class="mt-2 
+                text-center 
+                text-sm text-green-700 font-medium 
+                text-emerald-600 opacity-75 sm:absolute sm:text-left">
+                <p style="color:rgb(188, 16, 16)">{{$value}}</p>
+                </p> 
+            @endsession
+            @session('email-disposable')
+                <p class="mt-2 
+                text-center 
+                text-sm text-green-700 
+                font-medium text-emerald-600 opacity-75 sm:absolute sm:text-left">
+                <p style="color:rgb(188, 16, 16)">{{$value}}</p>
+                </p> 
             @endsession
         </div>
     </div>

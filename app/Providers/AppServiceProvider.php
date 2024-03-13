@@ -31,6 +31,17 @@ class AppServiceProvider extends ServiceProvider
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
 
+        Http::macro('emailverify', function (){
+            $apiKeys = config('subscriber-verify.apiKeys');
+            $keyIndex = 0;
+            $apiKey = $apiKeys[$keyIndex];
+            $keyIndex = ($keyIndex + 1) % count( $apiKeys);
+            return Http::withHeaders([
+                'X-RapidAPI-Host' => 'mailcheck.p.rapidapi.com',
+                'X-RapidAPI-Key' => $apiKey,
+            ])->baseUrl('https://mailcheck.p.rapidapi.com'); 
+        });
+
         Http::macro('mailerlite', function () {
             return Http::withToken(config('mailerlite.api_key'))
                 ->baseUrl('https://connect.mailerlite.com/');

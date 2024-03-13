@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\Verify\EmailVerifyJob;
 use Illuminate\Support\Facades\Session;
 use App\Jobs\Store\AddSubscriberToMailerLite;
 
@@ -17,25 +18,14 @@ class EmailSubscription extends Component
     protected function rules()
     {
         return [
-            'email' => ['required','email', Rule::unique('subscribers', 'email')]
+            'email' => ['required','email']
         ];
     }
 
     public function save()
     {
         $this->validate();
-        $emailID = DB::table('subscribers')->insertGetId(
-            [
-                'email' => $this->email,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        );
-        $email = DB::table('subscribers')->where('id', $emailID)->value('email');
-        $jobDispatch = AddSubscriberToMailerLite::dispatch($email);
-        if($jobDispatch){
-            Session::flash('email-success', 'Thanks for subscribing!');
-        }
+        EmailVerifyJob::dispatch($this->email);
         $this->reset();
     }
     public function render()
