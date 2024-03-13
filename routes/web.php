@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Category\PHPJobController;
 use App\Http\Controllers\Frontned\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +9,9 @@ Route::get('/', [JobController::class, 'index'])->name('job.index');
 Route::get('single/{uuid}', [JobController::class, 'show'])->name('job.single');
 
 Route::group([], function () {
-    Route::get('laravel', [CategoryController::class, 'laravel'])->name('job.laravel');
-    Route::get('wordpress', [CategoryController::class, 'wordpress'])->name('job.wordpress');
-    Route::get('symfony', [CategoryController::class, 'symfony'])->name('job.symfony');
+    Route::get('laravel', [PHPJobController::class, 'laravel'])->name('job.laravel');
+    Route::get('wordpress', [PHPJobController::class, 'wordpress'])->name('job.wordpress');
+    Route::get('symfony', [PHPJobController::class, 'symfony'])->name('job.symfony');
 });
 
 Route::get('/dashboard', function () {
