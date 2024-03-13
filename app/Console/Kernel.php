@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\VueJsJob;
 use App\Jobs\LaravelJob;
 use App\Jobs\SymfonyJob;
 use App\Jobs\WordPressJob;
@@ -19,9 +20,10 @@ class Kernel extends ConsoleKernel
         /*  $schedule->job(LaravelJob::class)->daily();
          $schedule->job(WordPressJob::class)->daily();
          $schedule->job(SymfonyJob::class)->daily(); */
-        $schedule->job(LaravelJob::class);
+       /*  $schedule->job(LaravelJob::class);
         $schedule->job(WordPressJob::class);
-        $schedule->job(SymfonyJob::class);
+        $schedule->job(SymfonyJob::class); */
+        $schedule->job(VueJsJob::class);
 
     }
 

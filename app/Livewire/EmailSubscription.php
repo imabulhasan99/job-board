@@ -2,19 +2,27 @@
 
 namespace App\Livewire;
 
-use App\Jobs\Store\AddSubscriberToMailerLite;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\DB;
+use App\Jobs\Store\AddSubscriberToMailerLite;
+use Illuminate\Validation\Rule;
 
 class EmailSubscription extends Component
 {
-    #[Validate('required|email')]
+    #[Validate]
     public $email;
+
+    protected function rules()
+    {
+        return [
+            'email' => ['required','email', Rule::unique('subscribers', 'email')]
+        ];
+    }
 
     public function save()
     {
-        dd($this->validate());
+        $this->validate();
         $emailID = DB::table('subscribers')->insertGetId(
             [
                 'email' => $this->email,
@@ -25,9 +33,7 @@ class EmailSubscription extends Component
         $email = DB::table('subscribers')->where('id', $emailID)->value('email');
         //AddSubscriberToMailerLite::dispatch($email);
         $this->reset();
-
     }
-
     public function render()
     {
         return view('livewire.email-subscription');

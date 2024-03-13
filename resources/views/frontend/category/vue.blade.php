@@ -157,7 +157,7 @@
                         <!-- Job list -->
                         <div class="c8d05 c0ahj">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <h2 class="c6cl6 cuad0 cfibj clt06">Latest WordPress Jobs</h2>
+                                <h2 class="c6cl6 cuad0 cfibj clt06">Latest Vue JS Jobs</h2>
                                 <p>Today Total Jobs: {{$totalJobs}}</p>
                             </div>
                             <!-- List container -->

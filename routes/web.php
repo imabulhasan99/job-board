@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Category\PHPJobController;
-use App\Http\Controllers\Frontned\JobController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontned\JobController;
+use App\Http\Controllers\Category\JSJobController;
+use App\Http\Controllers\Category\PHPJobController;
 
 Route::get('/', [JobController::class, 'index'])->name('job.index');
 Route::get('single/{uuid}', [JobController::class, 'show'])->name('job.single');
@@ -12,7 +13,14 @@ Route::group([], function () {
     Route::get('laravel', [PHPJobController::class, 'laravel'])->name('job.laravel');
     Route::get('wordpress', [PHPJobController::class, 'wordpress'])->name('job.wordpress');
     Route::get('symfony', [PHPJobController::class, 'symfony'])->name('job.symfony');
+    Route::get('vuejs', [JSJobController::class, 'vue'])->name('job.vue');
 });
+
+
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

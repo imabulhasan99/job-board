@@ -151,6 +151,5 @@
 
     </div>
 
-    <script src="{{asset('js/vendors/alpinejs.min.js')}}" defer=""></script>
     <script src="{{asset('js/main.js')}}"></script>
 </html>

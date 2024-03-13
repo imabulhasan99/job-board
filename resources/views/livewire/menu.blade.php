@@ -31,7 +31,8 @@
     
                     <!-- Item -->
                     <div class="cn582 ce33e cp9oo cujho cpiyw">
-                        <div class="ch6sm c1laq cu7if cw2fq"><a href="">Vue JS</a></div>
+                        <div class="ch6sm c1laq cu7if cw2fq"> 
+                            <a wire:navigate href="{{route('job.vue')}}">Vue JS</a></div>
                     </div>
     
                     <!-- Item -->
