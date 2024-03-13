@@ -3,10 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Jobs\Store\AddSubscriberToMailerLite;
-use Illuminate\Validation\Rule;
 
 class EmailSubscription extends Component
 {
@@ -31,7 +32,10 @@ class EmailSubscription extends Component
             ]
         );
         $email = DB::table('subscribers')->where('id', $emailID)->value('email');
-        //AddSubscriberToMailerLite::dispatch($email);
+        $jobDispatch = AddSubscriberToMailerLite::dispatch($email);
+        if($jobDispatch){
+            Session::flash('email-success', 'Thanks for subscribing!');
+        }
         $this->reset();
     }
     public function render()

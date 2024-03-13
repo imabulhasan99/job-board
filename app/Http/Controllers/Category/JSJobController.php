@@ -15,4 +15,19 @@ class JSJobController extends Controller
 
         return view('frontend.category.vue', $vueJob);
     }
+
+    public function react()
+    {
+        $reactJobs = JSJobService::getReactJob();
+
+        return view('frontend.category.react', $reactJobs);
+    }
+
+    public function node()
+    {
+        $nodeJobs = JSJobService::getNodeJob();
+
+        return view('frontend.category.node', $nodeJobs);
+    }
 }
+

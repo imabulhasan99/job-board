@@ -10,14 +10,17 @@
                         name="email" placeholder="Your email" aria-label="Your email">
                     <button class="c40tu ch6sm ce7qj cyky3 ctpla czwz3" type="submit">Join Newsletter</button>
                 </div>
-
-
-                <!-- Success message -->
-                <!-- <p class="mt-2 text-center text-sm font-medium text-emerald-600 opacity-75 sm:absolute sm:text-left">Thanks for subscribing!</p> -->
             </form>
             @error('email')
                 <p style="color:rgb(188, 16, 16)">{{ $message }}</p>
             @enderror
+            @session('email-success')
+            <p class="mt-2 
+            text-center 
+            text-sm text-green-700 font-medium text-emerald-600 opacity-75 sm:absolute sm:text-left">
+            {{$value}}
+            </p> 
+            @endsession
         </div>
     </div>
 </div>

@@ -16,4 +16,26 @@ class JSJobService
             'jobs' => $jobs,
         ];
     }
+
+    public static function getReactJob()
+    {
+        $totalJobs = JobListing::where('job_category', 'React')->count();
+        $jobs = JobListing::orderBy('posted_at', 'desc')->where('job_category', 'React')->paginate(30);
+
+        return [
+            'totalJobs' => $totalJobs,
+            'jobs' => $jobs,
+        ];
+    }
+
+    public static function getNodeJob()
+    {
+        $totalJobs = JobListing::where('job_category', 'NodeJS')->count();
+        $jobs = JobListing::orderBy('posted_at', 'desc')->where('job_category', 'NodeJS')->paginate(30);
+
+        return [
+            'totalJobs' => $totalJobs,
+            'jobs' => $jobs,
+        ];
+    }
 }

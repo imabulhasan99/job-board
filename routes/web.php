@@ -14,6 +14,8 @@ Route::group([], function () {
     Route::get('wordpress', [PHPJobController::class, 'wordpress'])->name('job.wordpress');
     Route::get('symfony', [PHPJobController::class, 'symfony'])->name('job.symfony');
     Route::get('vuejs', [JSJobController::class, 'vue'])->name('job.vue');
+    Route::get('reactjs', [JSJobController::class, 'react'])->name('job.react');
+    Route::get('nodejs', [JSJobController::class, 'node'])->name('job.node');
 });
 
 

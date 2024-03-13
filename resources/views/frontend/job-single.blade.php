@@ -90,9 +90,11 @@
                                 </div>
 
                                 <div class="czbam">
+                                    @if ($job->employer_website)
                                     <a class="c4von cw2fq c4vrg cf37z" 
                                     href="{{ $job->employer_website }}">
                                         Visit Website</a>
+                                    @endif
                                 </div>
 
                             </div>
