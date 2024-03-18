@@ -213,7 +213,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <livewire:email-subscription />
+                                    @if ($index % 10 === 0)
+                                        <livewire:email-subscription />
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
