@@ -152,4 +152,6 @@
     </div>
 
     <script src="{{asset('js/main.js')}}"></script>
+    @livewireScripts
+    @stack('extra-js')
 </html>
