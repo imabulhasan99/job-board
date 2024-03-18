@@ -154,10 +154,6 @@
 
                     <!-- Main content -->
                   <livewire:home-feed />
-
-
-
-
             </div>
         </div>
     </section>
