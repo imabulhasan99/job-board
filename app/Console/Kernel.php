@@ -2,10 +2,12 @@
 
 namespace App\Console;
 
+use App\Jobs\AspJob;
 use App\Jobs\ReactJob;
 use App\Jobs\VueJsJob;
-use App\Jobs\LaravelJob;
 use App\Jobs\NodeJSJob;
+use App\Jobs\LaravelJob;
+use App\Jobs\PaythonJob;
 use App\Jobs\SymfonyJob;
 use App\Jobs\WordPressJob;
 use Illuminate\Console\Scheduling\Schedule;
@@ -22,12 +24,14 @@ class Kernel extends ConsoleKernel
         /*  $schedule->job(LaravelJob::class)->daily();
          $schedule->job(WordPressJob::class)->daily();
          $schedule->job(SymfonyJob::class)->daily(); */
-        $schedule->job(LaravelJob::class);
+     /*    $schedule->job(LaravelJob::class);
         $schedule->job(WordPressJob::class);
         $schedule->job(SymfonyJob::class); 
         $schedule->job(VueJsJob::class); 
         $schedule->job(ReactJob::class);
-        $schedule->job(NodeJSJob::class);
+        $schedule->job(NodeJSJob::class); 
+        $schedule->job(PaythonJob::class);*/
+        $schedule->job(AspJob::class);
     }
 
     /**

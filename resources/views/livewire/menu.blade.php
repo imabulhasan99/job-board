@@ -49,11 +49,13 @@
 
                     <!-- Item -->
                     <div class="cn582 ce33e cp9oo cujho cpiyw">
-                        <div class="ch6sm c1laq cu7if cw2fq"><a href="">Paython</a></div>
+                        <div class="ch6sm c1laq cu7if cw2fq"> 
+                            <a wire:navigate href="{{route('job.paython')}}">Paython</a></div>
                     </div>
 
                     <div class="cn582 ce33e cp9oo cujho cpiyw">
-                        <div class="ch6sm c1laq cu7if cw2fq"><a href="">Asp.Net</a></div>
+                        <div class="ch6sm c1laq cu7if cw2fq"> 
+                            <a wire:navigate href="{{route('job.asp')}}">Asp.net</a></div>
                     </div>
                     
     

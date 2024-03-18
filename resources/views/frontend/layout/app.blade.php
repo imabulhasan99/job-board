@@ -70,7 +70,9 @@
                 </div>
             </section>
              <!-- Press logos -->
+          
             <livewire:menu />
+         
         @yield('main-content')
     </main>
         <!-- Site footer -->

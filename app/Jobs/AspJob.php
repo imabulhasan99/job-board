@@ -11,11 +11,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class PaythonJob implements ShouldQueue
+class AspJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     public $tries = 4;
-
     public $backoff = [30, 45, 60];
     /**
      * Create a new job instance.
@@ -30,20 +29,18 @@ class PaythonJob implements ShouldQueue
      */
     public function handle(): void
     {
-
         for ($page = 1; $page <= 2; $page++) {
             $response = Http::job()->get('/search', [
-                'query' => config('job-fetch.paython_search_query'),
+                'query' => config('job-fetch.asp_search_query'),
                 'page' => $page,
                 'num_pages' => 20,
                 'date_posted' => 'week',
             ]);
             if ($response->ok()) {
-                StoreJobs::dispatch($response->json(), 'Paython');
+                StoreJobs::dispatch($response->json(), 'Asp.net');
             } else {
                 Log::error($response['message']);
             }
         }
-
     }
 }

@@ -18,16 +18,12 @@ class JSJobController extends Controller
 
     public function react()
     {
-        $reactJobs = JSJobService::getReactJob();
-
-        return view('frontend.category.react', $reactJobs);
+        return view('frontend.category.react');
     }
 
     public function node()
     {
-        $nodeJobs = JSJobService::getNodeJob();
-
-        return view('frontend.category.node', $nodeJobs);
+        return view('frontend.category.node');
     }
 }
 

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Category\AspController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontned\JobController;
 use App\Http\Controllers\Category\JSJobController;
 use App\Http\Controllers\Category\PHPJobController;
+use App\Http\Controllers\Category\PaythonController;
 
 Route::get('/', [JobController::class, 'index'])->name('job.index');
 Route::get('single/{uuid}', [JobController::class, 'show'])->name('job.single');
@@ -16,6 +18,8 @@ Route::group([], function () {
     Route::get('vuejs', [JSJobController::class, 'vue'])->name('job.vue');
     Route::get('reactjs', [JSJobController::class, 'react'])->name('job.react');
     Route::get('nodejs', [JSJobController::class, 'node'])->name('job.node');
+    Route::get('paython', [PaythonController::class, 'paython'])->name('job.paython');
+    Route::get('asp', [AspController::class, 'asp'])->name('job.asp');
 });
 
 
