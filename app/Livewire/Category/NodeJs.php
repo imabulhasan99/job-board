@@ -2,27 +2,33 @@
 
 namespace App\Livewire\Category;
 
-use Livewire\Component;
 use App\Models\JobListing;
+use Livewire\Component;
 
 class NodeJs extends Component
 {
     public $offset = 0;
+
     public $limit = 10;
+
     public $jobs = [];
+
     public $totalJobs;
+
     public function mount()
     {
         $this->totalJobs = JobListing::where('job_category', 'NodeJS')->count();
         $this->loadMore();
     }
+
     public function render()
     {
-        return view('livewire.category.node-js',[
-            'jobs' => collect($this->jobs), 
-            'totalJobs' => $this->totalJobs
-    ]);
+        return view('livewire.category.node-js', [
+            'jobs' => collect($this->jobs),
+            'totalJobs' => $this->totalJobs,
+        ]);
     }
+
     public function loadMore()
     {
         $Jobs = JobListing::orderBy('posted_at', 'desc')

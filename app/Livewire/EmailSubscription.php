@@ -2,13 +2,9 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Livewire\Attributes\Validate;
-use Illuminate\Support\Facades\DB;
 use App\Jobs\Verify\EmailVerifyJob;
-use Illuminate\Support\Facades\Session;
-use App\Jobs\Store\AddSubscriberToMailerLite;
-use Illuminate\Validation\Rule;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
 
 class EmailSubscription extends Component
 {
@@ -18,7 +14,7 @@ class EmailSubscription extends Component
     protected function rules()
     {
         return [
-            'email' => ['required','email']
+            'email' => ['required', 'email'],
         ];
     }
 
@@ -28,6 +24,7 @@ class EmailSubscription extends Component
         EmailVerifyJob::dispatchSync($this->email);
         $this->reset();
     }
+
     public function render()
     {
         return view('livewire.email-subscription');

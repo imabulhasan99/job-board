@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,26 +21,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Http::macro('job', function (){
-            $apiKeys = config('job-fetch.apiKeys');
-            $keyIndex = 0;
-            $apiKey = $apiKeys[$keyIndex];
-            $keyIndex = ($keyIndex + 1) % count( $apiKeys);
+        Http::macro('job', function () {
+            $apiKey = DB::table('api_keys')->orderByDesc('request_count')->first();
+
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'jsearch.p.rapidapi.com',
-                'X-RapidAPI-Key' => array_rand($apiKeys),
+                'X-RapidAPI-Key' => $apiKey->api_key,
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
 
-        Http::macro('emailverify', function (){
+        Http::macro('emailverify', function () {
             $apiKeys = config('subscriber-verify.apiKeys');
             $keyIndex = 0;
             $apiKey = $apiKeys[$keyIndex];
-            $keyIndex = ($keyIndex + 1) % count( $apiKeys);
+            $keyIndex = ($keyIndex + 1) % count($apiKeys);
+
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'mailcheck.p.rapidapi.com',
                 'X-RapidAPI-Key' => $apiKey,
-            ])->baseUrl('https://mailcheck.p.rapidapi.com'); 
+            ])->baseUrl('https://mailcheck.p.rapidapi.com');
         });
 
         Http::macro('mailerlite', function () {

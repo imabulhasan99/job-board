@@ -2,14 +2,17 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\JobListing;
+use Livewire\Component;
 
 class HomeFeed extends Component
 {
     public $offset = 0;
+
     public $limit = 10;
+
     public $jobs = [];
+
     public $totalJobs;
 
     public function mount()

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
-use Illuminate\Http\Request;
-use App\Services\JSJobService;
-use App\Services\PHPJobService;
 use App\Http\Controllers\Controller;
+use App\Services\JSJobService;
 
 class JSJobController extends Controller
 {
@@ -26,4 +24,3 @@ class JSJobController extends Controller
         return view('frontend.category.node');
     }
 }
-

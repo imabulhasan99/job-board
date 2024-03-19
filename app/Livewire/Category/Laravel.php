@@ -2,27 +2,32 @@
 
 namespace App\Livewire\Category;
 
-use Livewire\Component;
 use App\Models\JobListing;
+use Livewire\Component;
 
 class Laravel extends Component
 {
     public $offset = 0;
+
     public $limit = 10;
+
     public $jobs = [];
+
     public $totalJobs;
+
     public function mount()
     {
         $this->totalJobs = JobListing::where('job_category', 'Laravel')->count();
         $this->loadMore();
     }
+
     public function render()
     {
-        return view('livewire.category.laravel', 
-        [
-            'jobs' => collect($this->jobs), 
-            'totalJobs' => $this->totalJobs
-        ]);
+        return view('livewire.category.laravel',
+            [
+                'jobs' => collect($this->jobs),
+                'totalJobs' => $this->totalJobs,
+            ]);
     }
 
     public function loadMore()
