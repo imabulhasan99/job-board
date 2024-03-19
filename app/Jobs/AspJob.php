@@ -40,6 +40,7 @@ class AspJob implements ShouldQueue
                 StoreJobs::dispatch($response->json(), 'Asp.net');
             } else {
                 Log::error($response['message']);
+                Log::error('Api key '. $response->header('X-RapidAPI-Key'));
             }
         }
     }

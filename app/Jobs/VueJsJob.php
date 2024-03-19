@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Jobs\Store\StoreJobs;
 use Illuminate\Bus\Queueable;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Queue\SerializesModels;
@@ -37,9 +38,17 @@ class VueJsJob implements ShouldQueue
             ]);
             if ($response->ok()) {
                 StoreJobs::dispatch($response->json(), 'Vue');
-            } else {
-                Log::error($response['message']);
             }
+            if ($response->status() == Response::HTTP_TOO_MANY_REQUESTS) {
+                Log::error('Too many requests');
+                Log::error('Api key: ' . $response->header('X-RapidAPI-Key'));
+            } elseif ($response->status() == Response::HTTP_UNAUTHORIZED && strpos($response['message'], 'You are not subscribed to this API') !== false) {
+                Log::error('You are not subscribed to this API');
+                Log::error('Api key: ' . $response->header('X-RapidAPI-Key'));
+            } else {
+                Log::error('HTTP request returned status code ' . $response->status() . ': ' . $response['message']);
+            }
+            
         }
     }
 }

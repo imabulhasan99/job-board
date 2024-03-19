@@ -44,6 +44,7 @@ class SymfonyJob implements ShouldQueue
                 StoreJobs::dispatch($response->json(), 'Symfony');
             } else {
                 Log::error($response['message']);
+                Log::error('Api key '. $response->header('X-RapidAPI-Key'));
             }
         }
 

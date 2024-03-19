@@ -25,7 +25,7 @@ class EmailSubscription extends Component
     public function save()
     {
         $this->validate();
-        EmailVerifyJob::dispatch($this->email);
+        EmailVerifyJob::dispatchSync($this->email);
         $this->reset();
     }
     public function render()

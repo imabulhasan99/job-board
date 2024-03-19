@@ -20,18 +20,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-        /*  $schedule->job(LaravelJob::class)->daily();
-         $schedule->job(WordPressJob::class)->daily();
-         $schedule->job(SymfonyJob::class)->daily(); */
-     /*    $schedule->job(LaravelJob::class);
-        $schedule->job(WordPressJob::class);
-        $schedule->job(SymfonyJob::class); 
-        $schedule->job(VueJsJob::class); 
-        $schedule->job(ReactJob::class);
-        $schedule->job(NodeJSJob::class); 
-        $schedule->job(PaythonJob::class);*/
-        $schedule->job(AspJob::class);
+        $schedule->job(LaravelJob::class)->days([2,6]);
+        $schedule->job(WordPressJob::class)->days([2,6]);
+        $schedule->job(SymfonyJob::class)->days([2,6]); 
+        $schedule->job(VueJsJob::class)->days([2,6]); 
+        $schedule->job(ReactJob::class)->days([2,6]);
+        $schedule->job(NodeJSJob::class)->days([2,6]); 
+        $schedule->job(PaythonJob::class)->days([2,6]);
+        $schedule->job(AspJob::class)->days([2,6]);
     }
 
     /**

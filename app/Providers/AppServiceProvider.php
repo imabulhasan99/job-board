@@ -20,14 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $apiKeys = config('job-fetch.apiKeys');
-        $keyIndex = 0;
-        Http::macro('job', function () use ($apiKeys, $keyIndex){
+        Http::macro('job', function (){
+            $apiKeys = config('job-fetch.apiKeys');
+            $keyIndex = 0;
             $apiKey = $apiKeys[$keyIndex];
             $keyIndex = ($keyIndex + 1) % count( $apiKeys);
             return Http::withHeaders([
                 'X-RapidAPI-Host' => 'jsearch.p.rapidapi.com',
-                'X-RapidAPI-Key' => $apiKey,
+                'X-RapidAPI-Key' => array_rand($apiKeys),
             ])->baseUrl('https://jsearch.p.rapidapi.com');
         });
 
