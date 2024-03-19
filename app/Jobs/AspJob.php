@@ -4,18 +4,22 @@ namespace App\Jobs;
 
 use App\Jobs\Store\StoreJobs;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class AspJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
     public $tries = 4;
+
     public $backoff = [30, 45, 60];
+
     /**
      * Create a new job instance.
      */
@@ -29,18 +33,27 @@ class AspJob implements ShouldQueue
      */
     public function handle(): void
     {
-        for ($page = 1; $page <= 2; $page++) {
-            $response = Http::job()->get('/search', [
-                'query' => config('job-fetch.asp_search_query'),
-                'page' => $page,
-                'num_pages' => 20,
-                'date_posted' => 'week',
-            ]);
-            if ($response->ok()) {
-                StoreJobs::dispatch($response->json(), 'Asp.net');
-            } else {
-                Log::error($response['message']);
-                Log::error('Api key '. $response->header('X-RapidAPI-Key'));
+        $apiKey = DB::table('api_keys')->orderByDesc('request_count')->first();
+        if ($apiKey->request_count > 0) {
+            for ($page = 1; $page <= 2; $page++) {
+                $response = Http::job()->get('/search', [
+                    'query' => config('job-fetch.asp_search_query'),
+                    'page' => $page,
+                    'num_pages' => 20,
+                    'date_posted' => 'week',
+                    'api_key_id' => $apiKey->id,
+                ]);
+                if ($response->ok()) {
+                    StoreJobs::dispatch($response->json(), 'Asp.net');
+
+                    DB::table('api_keys')
+                        ->where('id', $apiKey->id)
+                        ->update(['request_count' => $response->header('X-RateLimit-Requests-Remaining')]);
+                } else {
+                    Log::error($response['message']);
+
+                    continue;
+                }
             }
         }
     }

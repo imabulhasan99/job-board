@@ -4,13 +4,13 @@ namespace App\Jobs;
 
 use App\Jobs\Store\StoreJobs;
 use Illuminate\Bus\Queueable;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class VueJsJob implements ShouldQueue
 {
@@ -29,26 +29,30 @@ class VueJsJob implements ShouldQueue
      */
     public function handle(): void
     {
-        for ($page = 1; $page <= 2; $page++) {
-            $response = Http::job()->get('/search', [
-                'query' => config('job-fetch.vuejs_search_query'),
-                'page' => $page,
-                'num_pages' => 20,
-                'date_posted' => 'week',
-            ]);
-            if ($response->ok()) {
-                StoreJobs::dispatch($response->json(), 'Vue');
+        $apiKey = DB::table('api_keys')->orderByDesc('request_count')->first();
+        if ($apiKey->request_count > 0) {
+            for ($page = 1; $page <= 2; $page++) {
+                $response = Http::job()->get('/search', [
+                    'query' => config('job-fetch.vuejs_search_query'),
+                    'page' => $page,
+                    'num_pages' => 20,
+                    'date_posted' => 'week',
+                    'api_key_id' => $apiKey->id,
+                ]);
+
+                if ($response->ok()) {
+                    StoreJobs::dispatch($response->json(), 'Vue');
+
+                    DB::table('api_keys')
+                        ->where('id', $apiKey->id)
+                        ->update(['request_count' => $response->header('X-RateLimit-Requests-Remaining')]);
+                } else {
+                    Log::error($response['message']);
+
+                    continue;
+                }
+
             }
-            if ($response->status() == Response::HTTP_TOO_MANY_REQUESTS) {
-                Log::error('Too many requests');
-                Log::error('Api key: ' . $response->header('X-RapidAPI-Key'));
-            } elseif ($response->status() == Response::HTTP_UNAUTHORIZED && strpos($response['message'], 'You are not subscribed to this API') !== false) {
-                Log::error('You are not subscribed to this API');
-                Log::error('Api key: ' . $response->header('X-RapidAPI-Key'));
-            } else {
-                Log::error('HTTP request returned status code ' . $response->status() . ': ' . $response['message']);
-            }
-            
         }
     }
 }

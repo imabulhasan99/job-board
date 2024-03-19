@@ -4,13 +4,13 @@ namespace App\Jobs;
 
 use App\Jobs\Store\StoreJobs;
 use Illuminate\Bus\Queueable;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class LaravelJob implements ShouldQueue
 {
@@ -33,20 +33,29 @@ class LaravelJob implements ShouldQueue
      */
     public function handle()
     {
-        for ($page = 1; $page <= 2; $page++) {
-            $response = Http::job()->retry([100, 200])->get('/search', [
-                'query' => config('job-fetch.laravel_search_query'),
-                'page' => $page,
-                'num_pages' => 20,
-                'date_posted' => 'week',
-            ]);
-            if ($response->ok()) {
-                StoreJobs::dispatch($response->json(), 'Laravel');
-            } else {
-                Log::error($response['message']);
-                Log::error('Api key '. $response->header('X-RapidAPI-Key'));
+        $apiKey = DB::table('api_keys')->orderByDesc('request_count')->first();
+        if ($apiKey->request_count > 0) {
+            for ($page = 1; $page <= 2; $page++) {
+                $response = Http::job()->retry([100, 200])->get('/search', [
+                    'query' => config('job-fetch.laravel_search_query'),
+                    'page' => $page,
+                    'num_pages' => 20,
+                    'date_posted' => 'week',
+                    'api_key_id' => $apiKey->id,
+                ]);
+
+                if ($response->ok()) {
+                    StoreJobs::dispatch($response->json(), 'Laravel');
+
+                    DB::table('api_keys')
+                        ->where('id', $apiKey->id)
+                        ->update(['request_count' => $response->header('X-RateLimit-Requests-Remaining')]);
+                } else {
+                    Log::error($response['message']);
+
+                    continue;
+                }
             }
         }
-
     }
 }
