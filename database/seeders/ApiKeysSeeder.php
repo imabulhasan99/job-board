@@ -15,6 +15,11 @@ class ApiKeysSeeder extends Seeder
     public function run(): void
     {
         $apiKeys = [
+            '5cb3c7afc2msh7db74459d40200dp10a06djsn5d11aba4149f',
+            '1b79ea7b03msh89386a22560445ap17ab39jsn66cc6fcd850a',
+            '8664686ba6mshc9b058aa6514d29p14e9bdjsn15650dd00804',
+            'ec1a8ebe02msh5e97ffea02bb966p108f8bjsnadf23a64ebef',
+            '101e4d4b9amsh2d4168897cbd54bp175a3ejsn380ae9ec1dc9',
             'ebc33caf94msh3c6170c53ebd4b0p1435e3jsn4a7fd98af219',
             'ae58fe5e2amshb704d0855b08615p15692djsn631b88e76434',
             '4f0d6ab85emsh8e518a3ca23be4bp1fea37jsn61e81932bd06',

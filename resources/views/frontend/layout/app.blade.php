@@ -49,8 +49,8 @@
                         <div class="clxkp czbam chjqk">
 
                             <!-- Copy -->
-                            <h1 class="ckqm5 ccymi cuad0">Join your desgire job in the <span class="c1laq chgw8 cw2fq">industry</span></h1>
-                            <p class="cjx7n cqdqx ca6yp">This is the place where you can find your desgire job.</p>
+                            <h1 class="ckqm5 ccymi cuad0">Join your desire job in the <span class="c1laq chgw8 cw2fq">industry</span></h1>
+                            <p class="cjx7n cqdqx ca6yp">This is the place where you can find your desire job.</p>
                             <!-- Button + Avatars -->
                             <div class="cswe3 cp1au c8p1b crj19 c6rln cclz8 cua4c">
                                 <div class="czodn cp1au c8p1b crj19 cypyb cclz8">
