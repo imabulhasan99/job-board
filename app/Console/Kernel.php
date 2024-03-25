@@ -20,15 +20,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(LaravelJob::class)->days([2, 6]);
-        $schedule->job(WordPressJob::class)->days([2, 6]);
-        $schedule->job(SymfonyJob::class)->days([2, 6]);
-        $schedule->job(VueJsJob::class)->days([2, 6]);
-        $schedule->job(ReactJob::class)->days([2, 6]);
-        $schedule->job(NodeJSJob::class)->days([2, 6]);
-        $schedule->job(PaythonJob::class)->days([2, 6]);
-        $schedule->job(AspJob::class)->days([2, 6]);
+        $schedule->job(LaravelJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(WordPressJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(SymfonyJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(VueJsJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(ReactJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(NodeJSJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(PaythonJob::class)->days([1, 6])->withoutOverlapping();
+        $schedule->job(AspJob::class)->days([1, 6])->withoutOverlapping();
     }
+    
 
     /**
      * Register the commands for the application.

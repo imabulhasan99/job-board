@@ -47,7 +47,9 @@ class ReactJob implements ShouldQueue
                         ->update(['request_count' => $response->header('X-RateLimit-Requests-Remaining')]);
                 } else {
                     Log::error($response['message']);
-
+                    DB::table('api_keys')
+                    ->where('id', $apiKey->id)
+                    ->update(['request_count' => $response->header('X-RateLimit-Requests-Remaining')]);
                     continue;
                 }
             }
